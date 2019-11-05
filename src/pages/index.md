@@ -5,6 +5,7 @@ image: /img/home-jumbotron.jpg
 heading: heading
 subheading: Collaboration That Gives You Wings
 mainpitch:
+<<<<<<< HEAD
   title: Welcome to eduScrum
   description: >
     In companies Scrum sees to it that developers work together in a productive and enjoyable way. eduScrum is an edit of Scrum for the educational system.
@@ -23,6 +24,27 @@ mainpitch:
     Towards an effective and efficient educational approach that fits in the present!
 
     We would love to share our enthusiasm!
+=======
+  title: Why Kaldi
+  description: >-
+    In companies Scrum sees to it that developers work together in a productive
+    and enjoyable way. eduScrum is an edit of Scrum for the educational system.
+
+
+        - With eduScrum students work together in an energetic, targeted,  effective and efficient way.
+
+        - With eduScrum students are stimulated to develop into a valuable member of a team.
+
+        - eduScrum ascertains a mind-set that aims for constant improvement.
+
+        - eduScrum is a framework for a cocreative process and supporting.
+
+
+        "Improvements deliver criticism ... and great results"
+        Towards an effective and efficient educational approach that fits in the present!
+
+        We would love to share our enthusiasm!
+>>>>>>> 922818296c7322967234687242c414c8a6d9e489
 description: >-
   Kaldi is the ultimate spot for coffee lovers who want to learn about their
   java’s origin and support the farmers that grew it. We take coffee production,
