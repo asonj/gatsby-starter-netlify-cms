@@ -82,6 +82,9 @@ export const IndexPageTemplate = ({
                     <div
                       dangerouslySetInnerHTML={{ __html: mainpitchdescription }}
                     />
+                    <h3 className="subtitle" style={{ whiteSpace: "pre-line" }}>
+                      {mainpitchdescription}
+                    </h3>
                   </div>
                 </div>
                 <div className="columns">

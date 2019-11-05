@@ -13,8 +13,7 @@ export const IndexPageTemplate = ({
   title,
   heading,
   subheading,
-  mainpitchtitle,
-  mainpitchdescription,
+  mainpitch,
   description,
   intro
 }) => (
@@ -76,12 +75,12 @@ export const IndexPageTemplate = ({
               <div className="content">
                 <div className="content">
                   <div className="tile">
-                    <h1 className="title">{mainpitchtitle}</h1>
+                    <h1 className="title">{mainpitch.title}</h1>
                   </div>
                   <div className="tile">
-                    <div
-                      dangerouslySetInnerHTML={{ __html: mainpitchdescription }}
-                    />
+                    <h3 className="subtitle" style={{ whiteSpace: "pre-line" }}>
+                      {mainpitch.description}
+                    </h3>
                   </div>
                 </div>
                 <div className="columns">
@@ -126,8 +125,7 @@ IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   heading: PropTypes.string,
   subheading: PropTypes.string,
-  mainpitchtitle: PropTypes.string,
-  mainpitchdescription: PropTypes.string,
+  mainpitch: PropTypes.object,
   description: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array
@@ -140,7 +138,7 @@ const IndexPage = ({ data }) => {
   const htmlDescription = remark()
     .use(recommended)
     .use(remarkHtml)
-    .processSync(frontmatter.mainpitch.description)
+    .processSync(frontmatter.description)
     .toString();
 
   return (
@@ -150,9 +148,8 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
-        mainpitchtitle={frontmatter.mainpitch.title}
-        mainpitchdescription={htmlDescription}
-        description={frontmatter.description}
+        mainpitch={frontmatter.mainpitch}
+        description={htmlDescription}
         intro={frontmatter.intro}
       />
     </Layout>

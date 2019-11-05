@@ -79,9 +79,9 @@ export const IndexPageTemplate = ({
                     <h1 className="title">{mainpitchtitle}</h1>
                   </div>
                   <div className="tile">
-                    <div
-                      dangerouslySetInnerHTML={{ __html: mainpitchdescription }}
-                    />
+                    <h3 className="subtitle" style={{ whiteSpace: "pre-line" }}>
+                      {mainpitchdescription}
+                    </h3>
                   </div>
                 </div>
                 <div className="columns">
@@ -140,7 +140,7 @@ const IndexPage = ({ data }) => {
   const htmlDescription = remark()
     .use(recommended)
     .use(remarkHtml)
-    .processSync(frontmatter.mainpitch.description)
+    .processSync(frontmatter.mainPitch.description)
     .toString();
 
   return (

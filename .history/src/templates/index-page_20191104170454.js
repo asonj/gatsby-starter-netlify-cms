@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
-import remark from "remark";
-import recommended from "remark-preset-lint-recommended";
-import remarkHtml from "remark-html";
+
 import Layout from "../components/Layout";
 import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
@@ -13,8 +11,7 @@ export const IndexPageTemplate = ({
   title,
   heading,
   subheading,
-  mainpitchtitle,
-  mainpitchdescription,
+  mainpitch,
   description,
   intro
 }) => (
@@ -76,12 +73,12 @@ export const IndexPageTemplate = ({
               <div className="content">
                 <div className="content">
                   <div className="tile">
-                    <h1 className="title">{mainpitchtitle}</h1>
+                    <h1 className="title">{mainpitch.title}</h1>
                   </div>
                   <div className="tile">
-                    <div
-                      dangerouslySetInnerHTML={{ __html: mainpitchdescription }}
-                    />
+                    <h3 className="subtitle" style={{ whiteSpace: "pre-line" }}>
+                      {mainpitch.description}
+                    </h3>
                   </div>
                 </div>
                 <div className="columns">
@@ -126,8 +123,7 @@ IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   heading: PropTypes.string,
   subheading: PropTypes.string,
-  mainpitchtitle: PropTypes.string,
-  mainpitchdescription: PropTypes.string,
+  mainpitch: PropTypes.object,
   description: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array
@@ -136,13 +132,10 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  console.log(data);
-  const htmlDescription = remark()
-    .use(recommended)
-    .use(remarkHtml)
-    .processSync(frontmatter.mainpitch.description)
-    .toString();
-
+  const formattedDescription = frontmatter.description
+    .split(`\n\n`)
+    .map(paragraph => `<p>${paragraph.replace(/\n/g, `<br>`)}</p>`)
+    .join(``);
   return (
     <Layout>
       <IndexPageTemplate
@@ -150,8 +143,7 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
-        mainpitchtitle={frontmatter.mainpitch.title}
-        mainpitchdescription={htmlDescription}
+        mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
       />
@@ -172,7 +164,11 @@ export default IndexPage;
 export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      html
+      edges {
+        node {
+          excerpt(format: HTML)
+        }
+      }
       frontmatter {
         title
         image {
@@ -203,6 +199,11 @@ export const pageQuery = graphql`
           heading
           description
         }
+      }
+    }
+    edges {
+      node {
+        excerpt(format: HTML)
       }
     }
   }
