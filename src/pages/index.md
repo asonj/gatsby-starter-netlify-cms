@@ -7,10 +7,20 @@ subheading: Support sustainable farming while enjoying a cup
 mainpitch:
   title: Why Kaldi
   description: >
-    Kaldi is the coffee store for everyone who believes that great coffee
-    shouldn't just taste good, it should do good too. We source all of our beans
-    directly from small scale sustainable farmers and make sure part of the
-    profits are reinvested in their communities.
+    In companies Scrum sees to it that developers work together in a productive
+    and enjoyable way. eduScrum is an edit of Scrum for the educational system.
+
+
+        * With eduScrum students work together in an energetic, targeted,  effective and efficient way.
+        * With eduScrum students are stimulated to develop into a valuable member of a team.
+        * eduScrum ascertains a mind-set that aims for constant improvement.
+        * eduScrum is a framework for a cocreative process and supporting.
+
+
+        "Improvements deliver criticism ... and great results"
+        Towards an effective and efficient educational approach that fits in the present!
+
+        We would love to share our enthusiasm!
 description: >-
   Kaldi is the ultimate spot for coffee lovers who want to learn about their
   java’s origin and support the farmers that grew it. We take coffee production,
